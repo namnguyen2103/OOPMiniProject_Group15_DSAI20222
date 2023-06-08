@@ -21,12 +21,12 @@ public class Stack {
 		this.stack = new int[size];
 		
 		Random random = new Random();
-		boolean[] used = new boolean[15];
+		boolean[] used = new boolean[100];
 		
 		for (int i = this.top; i >= 0; i--) {
 			int x;
 			do {
-				x = random.nextInt(15);
+				x = random.nextInt(100);
 			}
 			while (used[x]);
 			
@@ -59,8 +59,10 @@ public class Stack {
 	
 	public void print() {
 		for (int i = 0; i <= this.top; i++) {
-			System.out.println(this.stack[i]);
+			System.out.print(this.stack[i]);
+			System.out.print(" ");
 		}
+		System.out.println();
 	}
 	
 	
@@ -72,18 +74,17 @@ public class Stack {
 		}
 		
 		Random random = new Random();
-		boolean used[] = new boolean[15];
+		boolean used[] = new boolean[100];
 		
-		// Iterate through every element in stack, marked as used in used array
 		for (int i = this.top; i >= 0; i--) {
 			used[this.stack[i]] = true;
 		}
 		
-		// Generate a random number that is not already in the stack
-		int x = random.nextInt(15);
-		while (used[x]) {
-			x = random.nextInt(15);
+		int x;
+		do {
+			x = random.nextInt(100);
 		}
+		while (used[x]);
 			
 		this.stack[++this.top] = x;
 	}
