@@ -11,7 +11,7 @@ public class Queue {
     private int count;      // current size of the queue
  
     // Constructor to initialize a queue
-    Queue(int size)
+    public Queue(int size)
     {
         arr = new int[size];
         capacity = size;
@@ -21,7 +21,7 @@ public class Queue {
     }
  
     // Utility function to dequeue the front element
-    public int dequeue()
+    public int delete()
     {
         // check for queue underflow
         if (isEmpty())
@@ -40,7 +40,7 @@ public class Queue {
         return x;
     }
     
-    public void enqueue() {
+    public void insert() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number to add to the queue: ");
         int number = scanner.nextInt();
@@ -98,28 +98,28 @@ public class Queue {
         return (size() == capacity);
     }    
 	 
-	/* Testing
+	// Testing
 	public static void main (String[] args)
     {
         // create a queue of capacity 5
         Queue q = new Queue(5);
  
-        q.enqueue();
-        q.enqueue();
-        q.enqueue();
- 
+        q.insert();
+        q.insert();
+        q.insert();
+         
         System.out.println("The front element is " + q.front());
         System.out.println("The rear element is " + q.rear());
-        q.dequeue();
+        q.delete();
         System.out.println("The front element is " + q.front());
         System.out.println("The rear element is " + q.rear());
  
         System.out.println("The queue size is " + q.size());
  
-        q.dequeue();
+        q.delete();
         System.out.println("The front element is " + q.front());
         System.out.println("The rear element is " + q.rear());
-        q.dequeue();
+        q.delete();
  
         if (q.isEmpty()) {
             System.out.println("The queue is empty");
@@ -127,5 +127,5 @@ public class Queue {
         else {
             System.out.println("The queue is not empty");
         }
-    } */
+    } 
 }
