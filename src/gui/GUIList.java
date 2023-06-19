@@ -24,7 +24,22 @@ public class GUIList extends JPanel {
 		// Add action listeners to the buttons
         listButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //Việc cần làm: viết 1 hàm tạo ra 1 JPanel mới chứa các operations
+				// Close the store window
+				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(GUIList.this);
+				frame.dispose();
+
+				// Create a new window
+				JFrame listFrame = new JFrame();
+				Container cp = listFrame.getContentPane();
+				cp.setLayout(new BorderLayout());
+
+				cp.add(createMenuBar(), BorderLayout.NORTH);
+				cp.add(new JPanel(), BorderLayout.CENTER); // Blank canvas to show animation
+				cp.add(createOperations(), BorderLayout.SOUTH);
+
+				listFrame.setVisible(true);
+				listFrame.setTitle("List");
+				listFrame.setSize(1200, 400);
             }
         });
 		
@@ -37,4 +52,49 @@ public class GUIList extends JPanel {
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 	}
+
+
+	JPanel createOperations() {
+		JPanel operations = new JPanel();
+		operations.setLayout(new GridLayout(1, 5, 10, 10));
+
+		JButton create = new JButton("Create");
+		JButton insert = new JButton("Insert");
+		JButton sort = new JButton("Sort");
+		JButton find = new JButton("Find");
+		JButton delete = new JButton("Delete");
+
+		operations.add(create);
+		operations.add(insert);
+		operations.add(sort);
+		operations.add(find);
+		operations.add(delete);
+
+		return operations;
+	}
+
+
+	JMenuBar createMenuBar() {
+		JMenuBar menuBar = new JMenuBar();
+        JMenu optionMenu = new JMenu("Option");
+        
+        JMenuItem helpMenuItem = new JMenuItem("Help");
+        helpMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	JOptionPane.showMessageDialog(new JFrame("Help"), "Some detailed explanation of the project and its usage.");
+            }
+        });
+        optionMenu.add(helpMenuItem);
+
+        JMenuItem exitMenuItem = new JMenuItem("Exit");
+        exitMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+            }
+        });
+        optionMenu.add(exitMenuItem);        
+        menuBar.add(optionMenu);
+        menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
+        return menuBar;
+	}	
 }
