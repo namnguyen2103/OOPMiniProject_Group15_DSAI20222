@@ -18,8 +18,10 @@ public class GUIList extends JPanel {
 		JPanel container = new JPanel();
 		container.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
+		
 		JButton listButton = new JButton("List");
 		container.add(listButton);
+		
 		
 		// Add action listeners to the buttons
         listButton.addActionListener(new ActionListener() {
@@ -36,6 +38,8 @@ public class GUIList extends JPanel {
 				cp.add(createMenuBar(), BorderLayout.NORTH);
 				cp.add(new JPanel(), BorderLayout.CENTER); // Blank canvas to show animation
 				cp.add(createOperations(), BorderLayout.SOUTH);
+				//cp.add(new JScrollPane(new JList<>(newlist.toArray()), BorderLayout.CENTER);
+
 
 				listFrame.setVisible(true);
 				listFrame.setTitle("List");
@@ -54,7 +58,8 @@ public class GUIList extends JPanel {
 	}
 
 
-	JPanel createOperations() {
+	JPanel createOperations() 
+	{
 		JPanel operations = new JPanel();
 		operations.setLayout(new GridLayout(1, 5, 10, 10));
 
@@ -63,6 +68,16 @@ public class GUIList extends JPanel {
 		JButton sort = new JButton("Sort");
 		JButton find = new JButton("Find");
 		JButton delete = new JButton("Delete");
+		
+		create.addActionListener(new ActionListener() 
+		{
+	        public void actionPerformed(ActionEvent e) 
+	        {
+	            JOptionPane.showMessageDialog(GUIList.this, "Create operation selected");
+	            //createlist();
+	            
+	        }
+	    });
 
 		operations.add(create);
 		operations.add(insert);
@@ -71,9 +86,19 @@ public class GUIList extends JPanel {
 		operations.add(delete);
 
 		return operations;
+	
+
 	}
+	
+	//private void createlist()
+	//{
+		//String input = JOptionPane.showInputDialog(GUIList.this, "Enter items (comma-separated):");
+		//String[] items = input.split(",");
+		
+		//for(int i = 1; i < items.length; ++i) newlist.add(Integer.parseInt(items[i]));
 
-
+	//}
+	
 	JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
         JMenu optionMenu = new JMenu("Option");
@@ -82,6 +107,7 @@ public class GUIList extends JPanel {
         helpMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	JOptionPane.showMessageDialog(new JFrame("Help"), "Some detailed explanation of the project and its usage.");
+            	
             }
         });
         optionMenu.add(helpMenuItem);
@@ -96,5 +122,8 @@ public class GUIList extends JPanel {
         menuBar.add(optionMenu);
         menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
         return menuBar;
-	}	
+	}
+	
+	
 }
+

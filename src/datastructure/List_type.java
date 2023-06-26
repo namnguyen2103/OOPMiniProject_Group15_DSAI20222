@@ -1,17 +1,19 @@
 package datastructure;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Random;
 
 
 public class List 
 {
-	LinkedList<Number> List_type = new LinkedList<>();
+	LinkedList<Integer> List_type = new LinkedList<>();
 	
 	public List()
 	{
 		
 	}
 	
-	public void insert(int index, Number num)
+	public void insert(int index, int num)
 	{
 		for(int i = 0; i < List_type.size(); ++i)
 		{
@@ -24,12 +26,12 @@ public class List
 		}
 	}
 	
-	public void add(Number num)
+	public void add(int num)
 	{
 		List_type.add(num);
 	}
 	
-	public void delete(Number num)
+	public void delete(int num)
 	{
 		List_type.remove(num);
 	}
@@ -40,7 +42,7 @@ public class List
 				
 		for(int i = 1; i <= Num; ++i)
 		{
-			Number ran_num = rand.nextInt();
+			Integer ran_num = rand.nextInt();
 			List_type.add(ran_num);
 		}
 	}
@@ -59,8 +61,8 @@ public class List
 		{
 			for(int j = i + 1; j < List_type.size(); ++j)
 			{
-				long Num_i = (long) List_type.get(i);
-				long Num_j = (long) List_type.get(j);
+				int Num_i =  List_type.get(i);
+				int Num_j =  List_type.get(j);
 				if(Num_i > Num_j)
 				{
 					List_type.add(i, Num_j);
@@ -73,7 +75,7 @@ public class List
 		
 	}
 	
-	public int find(Number num)
+	public int find(int num)
 	{
 		for(int i = 0; i < List_type.size(); ++i)
 		{
@@ -85,6 +87,11 @@ public class List
 		}
 		
 		return -1;
+	}
+	
+	public Object[] toArray_Listtype()
+	{
+		return List_type.toArray();
 	}
 	
 }

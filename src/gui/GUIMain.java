@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUIMain extends JFrame {
+
 	JPanel createNorth() {
 		JPanel north = new JPanel();
 		north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
@@ -41,8 +42,10 @@ public class GUIMain extends JFrame {
         JMenu optionMenu = new JMenu("Option");
         
         JMenuItem helpMenuItem = new JMenuItem("Help");
-        helpMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        helpMenuItem.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
             	JOptionPane.showMessageDialog(new JFrame("Help"), "Some detailed explanation of the project and its usage.");
             }
         });
