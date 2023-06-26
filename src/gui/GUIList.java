@@ -10,7 +10,7 @@ public class GUIList extends JPanel {
 	
 	private List_type newList = new List_type();
 	private JTextField Demo_Chart;
-	private JTextField Demo_Discription;
+	private JTextField Demo_Description;
 	
 	public GUIList() 
 	{
@@ -84,7 +84,6 @@ public class GUIList extends JPanel {
 		{
 	        public void actionPerformed(ActionEvent e) 
 	        {
-	            JOptionPane.showMessageDialog(GUIList.this, "Create operation selected");
 	            createlist();
 	        }
 	        
@@ -121,9 +120,9 @@ public class GUIList extends JPanel {
 		Demo_Chart.setEditable(false);
 		DemoList.add(Demo_Chart);
 		DemoList.add(new JLabel("List Description: "));
-		Demo_Discription = new JTextField(100);
-		Demo_Discription.setEditable(false);
-		DemoList.add(Demo_Discription);
+		Demo_Description = new JTextField(100);
+		Demo_Description.setEditable(false);
+		DemoList.add(Demo_Description);
 		
 		return DemoList;
 		
@@ -140,6 +139,7 @@ public class GUIList extends JPanel {
 		}
 		
 		Demo_Chart.setText("The list contain:" + newList.printSt());
+		Demo_Description.setText("The list has been created");
 		
 
 	}
@@ -152,9 +152,9 @@ public class GUIList extends JPanel {
 		Insert.add(new JLabel("Number: "));
 		Insert.add(new JTextField(100));
 		Insert.add(new JLabel("Index: "));
-		Demo_Discription = new JTextField(100);
-		Demo_Discription.setEditable(false);
-		DemoList.add(Demo_Discription);
+		 = new JTextField(100);
+		Demo_Description.setEditable(false);
+		DemoList.add(Demo_Description);
 		
 		
 		return Insert;
