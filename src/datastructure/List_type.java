@@ -4,13 +4,13 @@ import java.util.LinkedList;
 import java.util.Random;
 
 
-public class List 
+public class List_type
 {
 	LinkedList<Integer> List_type = new LinkedList<>();
 	
-	public List()
+	public List_type()
 	{
-		
+		 List_type = new LinkedList<>();
 	}
 	
 	public void insert(int index, int num)
@@ -55,6 +55,14 @@ public class List
 		}
 	}
 	
+	public String printSt()
+	{
+		String Str = new String();
+		
+		for(int i = 0; i < List_type.size(); ++i) Str += (List_type.get(i).toString() + ' ');
+		return Str;
+	}
+	
 	public void sort()
 	{
 		for(int i = 0; i < List_type.size(); ++i)
@@ -88,10 +96,9 @@ public class List
 		
 		return -1;
 	}
-	
-	public Object[] toArray_Listtype()
-	{
-		return List_type.toArray();
+
+	public Integer[] toArray() {
+		return (Integer[]) List_type.toArray();
 	}
 	
 }

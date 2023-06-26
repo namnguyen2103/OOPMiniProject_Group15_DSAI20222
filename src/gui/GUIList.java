@@ -1,11 +1,19 @@
 package gui;
+import datastructure.List_type;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 
 public class GUIList extends JPanel {
-	public GUIList() {
+	
+	private List_type newList = new List_type();
+	private JTextField Demo_Chart;
+	private JTextField Demo_Discription;
+	
+	public GUIList() 
+	{
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		JLabel title = new JLabel("LIST");
@@ -36,9 +44,9 @@ public class GUIList extends JPanel {
 				cp.setLayout(new BorderLayout());
 
 				cp.add(createMenuBar(), BorderLayout.NORTH);
-				cp.add(new JPanel(), BorderLayout.CENTER); // Blank canvas to show animation
+				cp.add(CreateMain(), BorderLayout.CENTER); // Blank canvas to show animation
 				cp.add(createOperations(), BorderLayout.SOUTH);
-				//cp.add(new JScrollPane(new JList<>(newlist.toArray()), BorderLayout.CENTER);
+
 
 
 				listFrame.setVisible(true);
@@ -54,6 +62,9 @@ public class GUIList extends JPanel {
 		this.add(container);
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		
+
 		
 	}
 
@@ -74,30 +85,82 @@ public class GUIList extends JPanel {
 	        public void actionPerformed(ActionEvent e) 
 	        {
 	            JOptionPane.showMessageDialog(GUIList.this, "Create operation selected");
-	            //createlist();
-	            
+	            createlist();
 	        }
+	        
 	    });
+		
+		insert.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				insertANum();
+			}
+		});
+		
 
 		operations.add(create);
 		operations.add(insert);
 		operations.add(sort);
 		operations.add(find);
 		operations.add(delete);
+		
+		
 
 		return operations;
 	
 
 	}
 	
-	//private void createlist()
-	//{
-		//String input = JOptionPane.showInputDialog(GUIList.this, "Enter items (comma-separated):");
-		//String[] items = input.split(",");
+	JPanel CreateMain()
+	{
+		JPanel DemoList = new JPanel();
+		DemoList.setLayout(new BoxLayout(DemoList, BoxLayout.Y_AXIS));
+		DemoList.add(new JLabel("List Demonstration: "));
+		Demo_Chart = new JTextField(100);
+		Demo_Chart.setEditable(false);
+		DemoList.add(Demo_Chart);
+		DemoList.add(new JLabel("List Description: "));
+		Demo_Discription = new JTextField(100);
+		Demo_Discription.setEditable(false);
+		DemoList.add(Demo_Discription);
 		
-		//for(int i = 1; i < items.length; ++i) newlist.add(Integer.parseInt(items[i]));
+		return DemoList;
+		
+	}
+	
+	public void createlist()
+	{
+		String input = JOptionPane.showInputDialog(GUIList.this, "Enter items (comma-separated):");
+		String[] items = input.split(",");
+		
+		for(int i = 0; i < items.length; ++i) 
+		{
+			newList.add(Integer.parseInt(items[i]));
+		}
+		
+		Demo_Chart.setText("The list contain:" + newList.printSt());
+		
 
-	//}
+	}
+	
+	JPanel insertANum()
+	{
+		JPanel Insert = new JPanel();
+		Insert.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		Insert.add(new JLabel("Number: "));
+		Insert.add(new JTextField(100));
+		Insert.add(new JLabel("Index: "));
+		Demo_Discription = new JTextField(100);
+		Demo_Discription.setEditable(false);
+		DemoList.add(Demo_Discription);
+		
+		
+		return Insert;
+	}
+	
+
 	
 	JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
